@@ -25,7 +25,7 @@ class LiSA():
                 cur += 1
             elif self._tokens[pc] == "ア":#bf = <
                 cur -= 1
-                if cur < 0: raise self.LiSAError(u'開始地点より左には移動できないんだよなぁ(呆れ')
+                if cur < 0: raise self.LiSAError(u'開始地点より左には移動できない')
             elif self._tokens[pc] == "ぬ":#bf = .
                 print chr(tape[cur]),
             elif self._tokens[pc] == ",":#bf = ,
@@ -46,13 +46,13 @@ class LiSA():
             if c == "[":
                 starts.append(i)
             elif c == "]":
-                if not starts: raise self.LiSAError(u"「]」多スギィ！！")
+                if not starts: raise self.LiSAError(u"「]」多")
                 frm = starts.pop()
                 to = i
 
                 jumps[frm] = to
                 jumps[to] = frm
-        if starts: raise LiSAError(u"「[」多スギィ！！")
+        if starts: raise LiSAError(u"「[」多")
 
         return jumps
 
@@ -66,5 +66,5 @@ except IndexError:
 try:
     LiSA(src).run()
 except LiSA.LiSAError:
-    print u'実行失敗してんだよサルゥ！！'
+    print u'実行失敗'
 stop = raw_input()
